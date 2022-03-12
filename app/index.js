@@ -180,28 +180,60 @@
 
 {
 /*
-* -- ES6 DataStructures--
+* -- ES6 DataStructures --
 */
-let a = new Set();
-a.add(5);
-a.add(43);
-a.add("Woohoo");
-a.add({x : 50 , y:200});
-console.log(a);
-console.log(a.has(5));
+//Sets in ES6
+  let a = new Set();
+  a.add(5);
+  a.add(43);
+  a.add("Woohoo");
+  a.add({x : 50 , y:200});
+  console.log(a);
+  console.log(a.has(5));
 
-let numbers = [1,2,3,4,5,5,4];
-let numSet = new Set(numbers);
-console.log(numSet);
+  let numbers = [1,2,3,4,5,5,4];
+  let numSet = new Set(numbers);
+  console.log(numSet);
 
-for (let element of numSet.values()){
-  console.log(element);
-}
+  for (let element of numSet.values()){
+    console.log(element);
+  }
 
-let chars = 'randomizedStringOfAlphabets';
-let charsArr = chars.split("");
-let charsSet = new Set(charsArr);
+  let chars = 'randomizedStringOfAlphabets';
+  let charsArr = chars.split("");
+  let charsSet = new Set(charsArr);
 
-console.log(charsSet);
+  console.log(charsSet);
 
+// Maps in es6
+
+  let sampleMap = new Map();
+  let key_1 = "String key";
+  let key_2 = {a: 'key'};
+  let key_3 = function(){};
+  sampleMap.set(key_1, 'return value for string key');
+  sampleMap.set(key_2, 'return value for object key');
+  sampleMap.set(key_3, 'return value for a function key');
+  console.log(sampleMap);
+
+  let numArr = [[1,'one'],[2,'two'],[3,'three']];
+  let valMap = new Map(numArr);
+
+  for (let [key,value] of valMap.entries()){
+    console.log(`${key} points to ${value}`);
+  }
+
+  let string = 'dgdfhgfdgfsfdsghjhg';
+  let letters = new Map();
+  for(let i=0;i<string.length; i ++) {
+    let letter = string[i];
+    if(!letters.has(letter)) {
+      letters.set(letter,1)
+    }
+    else{
+      letters.set(letter, letters.get(letter) +1);
+      }
+  }
+
+  console.log(letters);
 }
