@@ -176,5 +176,32 @@
       Harry.pet_name="Hedwig";
       console.log(Harry.greet());
       console.log(Harry)
-      console.log(Harry.info())
+}
+
+{
+/*
+* -- ES6 DataStructures--
+*/
+let a = new Set();
+a.add(5);
+a.add(43);
+a.add("Woohoo");
+a.add({x : 50 , y:200});
+console.log(a);
+console.log(a.has(5));
+
+let numbers = [1,2,3,4,5,5,4];
+let numSet = new Set(numbers);
+console.log(numSet);
+
+for (let element of numSet.values()){
+  console.log(element);
+}
+
+let chars = 'randomizedStringOfAlphabets';
+let charsArr = chars.split("");
+let charsSet = new Set(charsArr);
+
+console.log(charsSet);
+
 }
