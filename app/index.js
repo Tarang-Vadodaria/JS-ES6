@@ -1,6 +1,9 @@
 //import {fellowship} from './fellowship.js';
 //import Animal from './Animal'
+import Global from './components/Global.js'
 // ^^ Exports and Imports not working through Babel^^
+  import React from 'react';
+  import ReactDOM from 'react-dom';
 {
   /*
   * -- ES6 new operators --
@@ -484,11 +487,19 @@ p.then(response =>console.log(response))
 
 //async_three();
 
-async function async_four(){
-  const[res_one, res_two] = await Promise.all(
-    [async_one(), async_two()]
-  )
-  console.log(res_one,res_two);
+  async function async_four(){
+    const[res_one, res_two] = await Promise.all(
+      [async_one(), async_two()]
+    )
+    console.log(res_one,res_two);
+  }
+  async_four();
 }
-async_four();
+
+{/*
+  * Mini Project using React JSX
+  */
+  ReactDOM.render(
+    <Global /> , document.getElementById('root')
+  );
 }
