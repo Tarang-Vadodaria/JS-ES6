@@ -429,3 +429,66 @@ p.then(response =>console.log(response))
    .then(response => response.json())
    .then(json => console.log(json))
 }
+
+{
+
+  /*
+   * Es7 functionality
+  */
+
+  let a = 2**5
+  console.log(a);
+
+  let b = "wonderful".includes("wonder");
+  console.log(b);
+
+  let c =[2,3,4,5].includes(1);
+  console.log(c);
+
+  /*
+   * Es8 proposals
+  */
+   let obj = {a: 'one', b: 'two', c:'three'};
+   let keys = Object.keys(obj);
+   console.log(keys);
+   // ES 8 new functionality
+   let values =Object.values(obj);
+   console.log(values);
+   let entries =Object.entries(obj);
+   console.log(entries);
+
+   for (let entry of entries){
+     console.log(`key: ${entry[0]}, value : ${entry[1]} `);
+   }
+
+   /*
+    * Es8 proposals - Async
+   */
+
+   async function async_one(){
+     return "one";
+   }
+   async function async_two(){
+     //throw new Error('Issue with async!');
+     return "two";
+   }
+
+
+  // async_two().catch(error => console.log(error));
+ async function async_three(){
+   const one = await async_one();
+   console.log(one);
+   const two = await async_two();
+   console.log(two);
+ }
+
+//async_three();
+
+async function async_four(){
+  const[res_one, res_two] = await Promise.all(
+    [async_one(), async_two()]
+  )
+  console.log(res_one,res_two);
+}
+async_four();
+}
