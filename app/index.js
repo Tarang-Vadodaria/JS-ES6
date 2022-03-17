@@ -317,4 +317,92 @@
     wallet.deposit20();
     console.log(wallet.check());
     console.log(wallet.balance); // cannot access private variable
+    //Does JavaScript support private methods natively ?
+      //NO, But we can emulate the behavior of private methods with closures!
+}
+
+
+{
+
+  /*
+  * -- ES6 Generators --
+  */
+
+  function* letterMaker(){
+    yield 'a';
+    yield 'b';
+    yield 'c';
+  }
+  let letterGen = letterMaker();
+  console.log(letterGen.next().value);
+  console.log(letterGen.next().value);
+  console.log(letterGen.next().value);
+  console.log(letterGen.next().value);
+
+  function* countMaker(){
+    let count = 0;
+    while (count <3){
+      count +=1;
+      yield count;
+
+    }
+  }
+  let countGen = countMaker();
+  console.log(countGen.next().value);
+  console.log(countGen.next().value);
+  console.log(countGen.next().value);
+
+  function* evens(){
+    let counteven = 0;
+    while(true){
+      counteven+=2;
+      let reset = yield counteven;
+      if(reset){
+        counteven = 0;
+      }
+    }
+  }
+  let seq = evens();
+  console.log(seq.next().value);
+  console.log(seq.next().value);
+  console.log(seq.next().value);
+  console.log(seq.next(true).value);
+  console.log(seq.next().value);
+
+
+
+
+const  arrayIterator =(array) => {
+  let index = 0;
+  return {
+    next: () => {
+      if (index < array.length){
+        let next = array[index];
+        index +=1;
+        return next;
+      }
+    }
+  }
+  }
+
+ let it = arrayIterator(['1','2','3']);
+ console.log(it.next());
+ console.log(it.next());
+ console.log(it.next());
+ console.log(it.next());
+
+
+function* arrayGenerator(){
+  // for(let arg of arguments){
+  //   yield arg;
+  // }
+ yield* arguments
+
+}
+
+var itg = arrayGenerator(1,2,3);
+console.log(itg.next().value);
+console.log(itg.next().value);
+console.log(itg.next().value);
+console.log(itg.next().value);
 }

@@ -1,6 +1,7 @@
 const path = require('path');
 module.exports = {
-  entry: path.resolve(__dirname,'app'),
+  //entry: path.resolve(__dirname,'app'),
+  entry: ['babel-polyfill', __dirname + '/app/index.js'],
   // OPTIMIZE:
   optimization:{
     minimize: false
