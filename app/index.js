@@ -369,40 +369,63 @@
   console.log(seq.next(true).value);
   console.log(seq.next().value);
 
-
-
-
-const  arrayIterator =(array) => {
-  let index = 0;
-  return {
-    next: () => {
-      if (index < array.length){
-        let next = array[index];
-        index +=1;
-        return next;
+  const  arrayIterator =(array) => {
+    let index = 0;
+    return {
+      next: () => {
+        if (index < array.length){
+          let next = array[index];
+          index +=1;
+          return next;
+        }
       }
     }
+    }
+
+   let it = arrayIterator(['1','2','3']);
+   console.log(it.next());
+   console.log(it.next());
+   console.log(it.next());
+   console.log(it.next());
+
+
+  function* arrayGenerator(){
+    // for(let arg of arguments){
+    //   yield arg;
+    // }
+   yield* arguments
+
   }
-  }
 
- let it = arrayIterator(['1','2','3']);
- console.log(it.next());
- console.log(it.next());
- console.log(it.next());
- console.log(it.next());
+  var itg = arrayGenerator(1,2,3);
+  console.log(itg.next().value);
+  console.log(itg.next().value);
+  console.log(itg.next().value);
+  console.log(itg.next().value);
 
-
-function* arrayGenerator(){
-  // for(let arg of arguments){
-  //   yield arg;
-  // }
- yield* arguments
 
 }
 
-var itg = arrayGenerator(1,2,3);
-console.log(itg.next().value);
-console.log(itg.next().value);
-console.log(itg.next().value);
-console.log(itg.next().value);
+{
+  /*
+  * -- ES6 Async programming  --
+  */
+
+let p = new Promise((resolve, reject) => {
+//reject('rejected promise data')
+  setTimeout(() => resolve('Resolved promise data'), 3000);
+})
+
+p.then(response =>console.log(response))
+ .catch(error =>console.log(error));
+
+ console.log('After promsie consumption');
+
+/*
+ * Fetch and HTTP in ES6
+*/
+ fetch('https://jsonplaceholder.typicode.com/todos/1')
+//   .then(response => console.log(response));
+   .then(response => response.json())
+   .then(json => console.log(json))
 }
